@@ -7,5 +7,6 @@ namespace LoggerLibrary
         DateTime Now { get; }
 
         string GetDateTimeStamp(DateTime dateTime);
+        string GetDateTimeHeading(DateTime dateTime);
     }
 }

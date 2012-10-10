@@ -16,5 +16,12 @@ namespace LoggerLibrary
 
             return dateTimeStamp;
         }
+
+        public string GetDateTimeHeading(DateTime dateTime)
+        {
+            var dateTimeHeading = string.Format("{0} {1}", dateTime.ToShortTimeString(), dateTime.ToShortDateString());
+
+            return dateTimeHeading;
+        }
     }
 }

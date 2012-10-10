@@ -83,18 +83,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MainIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\LoggerLibrary\LoggerLibrary.csproj">
       <Project>{52670308-C896-43E4-AE99-22A815B8E912}</Project>
       <Name>LoggerLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Notepad.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy Logger.exe c:\aav\
-copy Logger.exe.config c:\aav
+copy Logger.exe.config c:\aav\
 copy Ninject.dll c:\aav
 copy LoggerLibrary.dll c:\aav</PostBuildEvent>
   </PropertyGroup>

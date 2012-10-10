@@ -10,8 +10,10 @@ To open the folder containing the log file, click the "Folder" button.
 
 The program will always minimize to the notification tray.
 
-The "Start / Stop" button will cause a timer to begin counting down the number or minutes shown in the small text box next to the "Start / Stop" button. The application will minimize and get out of the way when the timer is started. When the timer completes, the program's window will be normalized and brought to the front.
+The "Start / Stop" button will cause a timer to begin counting down the number or minutes shown in the small text box next to the "Start / Stop" button. The application will minimize and get out of the way when the timer is started. When the timer completes, the program will pop a little bubble in in the system tray.
 
 Pressing Ctrl+Shift+D will give you the option of deleting the log file.
 
 Pressing Ctrl+Shift+A will give you the option of archiving the log file. This will rename the log file with a date / time stamp as the new extension.
+
+The application's icon was downloaded from [IconArchive](http://www.iconarchive.com/show/sleek-xp-software-icons-by-deleket/Notepad-icon.html) and was created by [Deleket](http://www.deleket.com).

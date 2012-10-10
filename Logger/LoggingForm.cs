@@ -21,9 +21,11 @@ namespace Logger
 
             InitializeComponent();
 
-            Icon = Resources.MainIcon;
+            Icon = Resources.Notepad;
             Opacity = _configurationManager.WindowOpacity;
-            NotifyIcon.Icon = Resources.MainIcon;
+            
+            NotifyIcon.Icon = Resources.Notepad;
+            NotifyIcon.BalloonTipText = "The logger timer has elapsed.";
         }
 
         private void LoggingFormLoad(object sender, EventArgs e)
@@ -126,7 +128,8 @@ namespace Logger
         private void TimerTick(object sender, EventArgs e)
         {
             ToggleTimer();
-            WindowState = FormWindowState.Normal;
+
+            NotifyIcon.ShowBalloonTip(10*1000);
         }
 
         private void ToggleTimer()
@@ -144,6 +147,11 @@ namespace Logger
                 return;
 
             Process.Start(_fileManager.ProgramDirectory);
+        }
+
+        private void NotifyIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
         }
     }
 }

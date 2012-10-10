@@ -22,8 +22,6 @@ namespace LoggerLibrary
 
         public void WriteLine(string logEntry)
         {
-            var now = _dateTimeProvider.Now;
-
             using (var sw = new StreamWriter(_configurationManager.FileName, true))
             {
                 if (_newFile)
@@ -32,7 +30,8 @@ namespace LoggerLibrary
                     _newFile = false;
                 }
 
-                sw.WriteLine(string.Format("{0} {1}{2}{3}{4}{5}", now.ToShortTimeString(), now.ToShortDateString(),
+                sw.WriteLine(string.Format("{0}{1}{2}{3}{4}",
+                                           _dateTimeProvider.GetDateTimeHeading(_dateTimeProvider.Now),
                                            Environment.NewLine, Environment.NewLine, logEntry, Environment.NewLine));
                 sw.Close();
             }

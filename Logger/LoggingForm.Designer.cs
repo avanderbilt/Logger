@@ -42,7 +42,7 @@
             // LoggingButton
             // 
             this.LoggingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoggingButton.Location = new System.Drawing.Point(323, 88);
+            this.LoggingButton.Location = new System.Drawing.Point(346, 95);
             this.LoggingButton.Name = "LoggingButton";
             this.LoggingButton.Size = new System.Drawing.Size(75, 31);
             this.LoggingButton.TabIndex = 1;
@@ -59,18 +59,19 @@
             this.LoggingTextBox.Location = new System.Drawing.Point(12, 12);
             this.LoggingTextBox.Multiline = true;
             this.LoggingTextBox.Name = "LoggingTextBox";
-            this.LoggingTextBox.Size = new System.Drawing.Size(393, 69);
+            this.LoggingTextBox.Size = new System.Drawing.Size(409, 77);
             this.LoggingTextBox.TabIndex = 0;
             // 
             // NotifyIcon
             // 
             this.NotifyIcon.Visible = true;
+            this.NotifyIcon.BalloonTipClicked += new System.EventHandler(this.NotifyIcon_BalloonTipClicked);
             this.NotifyIcon.DoubleClick += new System.EventHandler(this.NotifyIconDoubleClick);
             // 
             // OpenButton
             // 
             this.OpenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OpenButton.Location = new System.Drawing.Point(242, 88);
+            this.OpenButton.Location = new System.Drawing.Point(265, 95);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(75, 31);
             this.OpenButton.TabIndex = 2;
@@ -81,7 +82,7 @@
             // TimerButton
             // 
             this.TimerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TimerButton.Location = new System.Drawing.Point(12, 88);
+            this.TimerButton.Location = new System.Drawing.Point(12, 95);
             this.TimerButton.Name = "TimerButton";
             this.TimerButton.Size = new System.Drawing.Size(75, 31);
             this.TimerButton.TabIndex = 3;
@@ -92,7 +93,7 @@
             // IntervalTextBox
             // 
             this.IntervalTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.IntervalTextBox.Location = new System.Drawing.Point(93, 92);
+            this.IntervalTextBox.Location = new System.Drawing.Point(93, 99);
             this.IntervalTextBox.Name = "IntervalTextBox";
             this.IntervalTextBox.Size = new System.Drawing.Size(56, 22);
             this.IntervalTextBox.TabIndex = 4;
@@ -104,7 +105,7 @@
             // FolderButton
             // 
             this.FolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.FolderButton.Location = new System.Drawing.Point(161, 87);
+            this.FolderButton.Location = new System.Drawing.Point(184, 95);
             this.FolderButton.Name = "FolderButton";
             this.FolderButton.Size = new System.Drawing.Size(75, 31);
             this.FolderButton.TabIndex = 5;
@@ -117,7 +118,7 @@
             this.AcceptButton = this.LoggingButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 130);
+            this.ClientSize = new System.Drawing.Size(433, 138);
             this.Controls.Add(this.FolderButton);
             this.Controls.Add(this.IntervalTextBox);
             this.Controls.Add(this.TimerButton);

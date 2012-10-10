@@ -117,20 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeleteLogFileQuestion" xml:space="preserve">
+    <value>Would you like to delete the log file?</value>
+  </data>
+  <data name="DeleteLogFileCaption" xml:space="preserve">
+    <value>Delete the Log File</value>
+  </data>
+  <data name="ArchiveLogFileQuestion" xml:space="preserve">
+    <value>Would you like to archive the log file?</value>
+  </data>
+  <data name="ArchiveLogFileCaption" xml:space="preserve">
+    <value>Archive the Log File</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MainIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MainIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DeleteLogFileQuestion">
-    <value xml:space="preserve">Would you like to delete the log file?</value>
-  </data>
-  <data name="DeleteLogFileCaption">
-    <value xml:space="preserve">Delete the Log File</value>
-  </data>
-  <data name="ArchiveLogFileQuestion">
-    <value xml:space="preserve">Would you like to archive the log file?</value>
-  </data>
-  <data name="ArchiveLogFileCaption">
-    <value xml:space="preserve">Archive the Log File</value>
+  <data name="Notepad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Notepad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
