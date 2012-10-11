@@ -129,7 +129,9 @@ namespace Logger
         {
             ToggleTimer();
 
-            NotifyIcon.ShowBalloonTip(10*1000);
+            NotifyIcon.ShowBalloonTip(30*1000);
+
+            NotifyIcon.Text = Text = string.Format("Logger - {0}", _configurationManager.FileName);
         }
 
         private void ToggleTimer()
@@ -139,6 +141,8 @@ namespace Logger
 
             if (Timer.Enabled)
                 WindowState = FormWindowState.Minimized;
+
+            NotifyIcon.Text = Text = string.Format("Logger - {0}{1}", _configurationManager.FileName, Timer.Enabled ? " - Timer Running" : string.Empty);
         }
 
         private void FolderButtonClick(object sender, EventArgs e)
