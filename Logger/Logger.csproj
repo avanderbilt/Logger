@@ -95,6 +95,10 @@
       <Project>{3d5ffdbf-a57f-4296-97b5-ca48f56d309c}</Project>
       <Name>Aav.Configuration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Aav.ExtensionMethods\Aav.ExtensionMethods.csproj">
+      <Project>{C4004B32-5F03-4111-86C1-0F2035B56FC0}</Project>
+      <Name>Aav.ExtensionMethods</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Notepad.ico" />

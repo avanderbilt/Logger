@@ -34,13 +34,7 @@ namespace Logger
 
         private void LoggingButtonClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(LoggingTextBox.Text))
-                return;
-
-            _logManager.WriteLine(LoggingTextBox.Text);
-
-            LoggingTextBox.Text = string.Empty;
-            LoggingTextBox.Focus();
+            WriteLogLine();
         }
 
         private void LoggingFormResize(object sender, EventArgs e)
@@ -66,8 +60,7 @@ namespace Logger
 
         private void OpenButtonClick(object sender, EventArgs e)
         {
-            if (_logManager.Exists())
-                Process.Start(Program.Configuration.LogFileName);                
+            OpenLogFile();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -77,15 +70,53 @@ namespace Logger
                 case Keys.Escape:
                     WindowState = FormWindowState.Minimized;
                     return true;
+                case (Keys.L | Keys.Control):
+                    WriteLogLine();
+                    return true;
+                case (Keys.O | Keys.Control | Keys.Shift):
+                    OpenLogFile();
+                    return true;
+                case (Keys.F | Keys.Control | Keys.Shift):
+                    OpenLogFolder();
+                    return true;
                 case (Keys.D | Keys.Control | Keys.Shift):
                     DeleteLogFile();
                     return true;
                 case (Keys.A | Keys.Control | Keys.Shift):
                     ArchiveLogFile();
                     return true;
+                case (Keys.LWin | Keys.Control):
+                case (Keys.RWin | Keys.Control):
+                    WindowState = FormWindowState.Normal;
+                    return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
             }
+        }
+
+        private void WriteLogLine()
+        {
+            if (string.IsNullOrWhiteSpace(LoggingTextBox.Text))
+                return;
+
+            _logManager.WriteLine(LoggingTextBox.Text);
+
+            LoggingTextBox.Text = string.Empty;
+            LoggingTextBox.Focus();
+        }
+
+        private void OpenLogFile()
+        {
+            if (_logManager.Exists())
+                Process.Start(Program.Configuration.LogFileName);
+        }
+
+        private void OpenLogFolder()
+        {
+            if (string.IsNullOrEmpty(Environment.GetCommandLineArgs()[0]))
+                return;
+
+            Process.Start(Environment.GetCommandLineArgs()[0]);
         }
 
         private void DeleteLogFile()
@@ -142,10 +173,7 @@ namespace Logger
 
         private void FolderButtonClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Environment.GetCommandLineArgs()[0]))
-                return;
-
-            Process.Start(Environment.GetCommandLineArgs()[0]);
+            OpenLogFolder();
         }
 
         private void NotifyIcon_BalloonTipClicked(object sender, EventArgs e)

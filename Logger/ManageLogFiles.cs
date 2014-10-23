@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Aav.ExtensionMethods;
 
 namespace Logger
 {
@@ -16,17 +17,15 @@ namespace Logger
         {
             using (var sw = new StreamWriter(Program.Configuration.LogFileName, true))
             {
+                var now = DateTime.Now;
+
                 if (_newFile)
                 {
-                    sw.WriteLine(".LOG{0}", Environment.NewLine);
+                    sw.WriteLine("# Log, Created {0}{1}", now.ToLiterateString(), Environment.NewLine);
                     _newFile = false;
                 }
 
-                var now = DateTime.Now;
-
-                sw.WriteLine("{0}{1}{2}{3}{4}",
-                             string.Format("{0} {1}", now.ToShortTimeString(), now.ToShortDateString()),
-                             Environment.NewLine, Environment.NewLine, logEntry, Environment.NewLine);
+                sw.WriteLine("## {0}{2}{2}{1}{2}", now.ToSortableString(), logEntry, Environment.NewLine);
             }
         }
 
