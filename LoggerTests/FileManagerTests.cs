@@ -1,12 +1,13 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using LoggerLibrary;
-using NUnit.Framework;
 using Ninject;
+using NUnit.Framework;
 
 namespace LoggerTests
 {
     [TestFixture]
-    class FileManagerTests
+    class FileManagerTests : IDisposable
     {
         private const string FileName = "testfile.txt";
         private const string DestinationFileName = "destination.txt";
@@ -28,10 +29,9 @@ namespace LoggerTests
         [SetUp]
         public void SetUp()
         {
-            var fileStream = File.Create(FileName);
-
-            fileStream.Close();
-            fileStream.Dispose();
+            using (File.Create(FileName))
+            {
+            }
         }
 
         [TearDown]
@@ -71,6 +71,11 @@ namespace LoggerTests
         public void ProgramDirectoryIsNotNull()
         {
             Assert.IsNotNullOrEmpty(_fileManager.ProgramDirectory);
+        }
+
+        public void Dispose()
+        {
+            _kernel.Dispose();
         }
     }
 }

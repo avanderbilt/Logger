@@ -36,17 +36,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IProvideDateTime.cs" />
-    <Compile Include="IManageFiles.cs" />
-    <Compile Include="ManageConfiguration.cs" />
-    <Compile Include="ManageFiles.cs" />
-    <Compile Include="ProvideDateTime.cs" />
-    <Compile Include="ReadConfigurationFile.cs" />
-    <Compile Include="IManageConfiguration.cs" />
-    <Compile Include="IReadConfigurationFile.cs" />
-    <Compile Include="IManageLogFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ManageLogFiles.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

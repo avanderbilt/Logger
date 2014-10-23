@@ -3,37 +3,32 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
 using Logger.Properties;
-using LoggerLibrary;
 
 namespace Logger
 {
     public partial class LoggingForm : Form
     {
         private readonly IManageLogFiles _logManager;
-        private readonly IManageConfiguration _configurationManager;
-        private readonly IManageFiles _fileManager;
 
-        public LoggingForm(IManageLogFiles logManager, IManageConfiguration configurationManager, IManageFiles fileManager)
+        public LoggingForm(IManageLogFiles logManager)
         {
             _logManager = logManager;
-            _configurationManager = configurationManager;
-            _fileManager = fileManager;
 
             InitializeComponent();
 
             Icon = Resources.Notepad;
-            Opacity = _configurationManager.WindowOpacity;
+            Opacity = Program.Configuration.WindowOpacity;
             
             NotifyIcon.Icon = Resources.Notepad;
-            NotifyIcon.BalloonTipText = "The logger timer has elapsed.";
+            NotifyIcon.BalloonTipText = Resources.LoggerTimerElapsed;
         }
 
         private void LoggingFormLoad(object sender, EventArgs e)
         {
-            NotifyIcon.Text = Text = string.Format("Logger - {0}", _configurationManager.FileName);
-            IntervalTextBox.Text = _configurationManager.DefaultInterval.ToString(CultureInfo.InvariantCulture);
+            NotifyIcon.Text = Text = string.Format("Logger - {0}", Program.Configuration.LogFileName);
+            IntervalTextBox.Text = Program.Configuration.DefaultInterval.ToString(CultureInfo.InvariantCulture);
 
-            Timer.SetIntevalInMinutes(_configurationManager.DefaultInterval);
+            Timer.SetIntervalInMinutes(Program.Configuration.DefaultInterval);
             Timer.Enabled = false;
         }
 
@@ -72,7 +67,7 @@ namespace Logger
         private void OpenButtonClick(object sender, EventArgs e)
         {
             if (_logManager.Exists())
-                Process.Start(_configurationManager.FileName);                
+                Process.Start(Program.Configuration.LogFileName);                
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -122,7 +117,7 @@ namespace Logger
         private void TimerButtonClick(object sender, EventArgs e)
         {
             ToggleTimer();
-            Timer.SetIntevalInMinutes(int.Parse(IntervalTextBox.Text));
+            Timer.SetIntervalInMinutes(int.Parse(IntervalTextBox.Text));
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -131,7 +126,7 @@ namespace Logger
 
             NotifyIcon.ShowBalloonTip(30*1000);
 
-            NotifyIcon.Text = Text = string.Format("Logger - {0}", _configurationManager.FileName);
+            NotifyIcon.Text = Text = string.Format("Logger - {0}", Program.Configuration.LogFileName);
         }
 
         private void ToggleTimer()
@@ -142,15 +137,15 @@ namespace Logger
             if (Timer.Enabled)
                 WindowState = FormWindowState.Minimized;
 
-            NotifyIcon.Text = Text = string.Format("Logger - {0}{1}", _configurationManager.FileName, Timer.Enabled ? " - Timer Running" : string.Empty);
+            NotifyIcon.Text = Text = string.Format("Logger - {0}{1}", Program.Configuration.LogFileName, Timer.Enabled ? " - Timer Running" : string.Empty);
         }
 
         private void FolderButtonClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(_fileManager.ProgramDirectory))
+            if (string.IsNullOrEmpty(Environment.GetCommandLineArgs()[0]))
                 return;
 
-            Process.Start(_fileManager.ProgramDirectory);
+            Process.Start(Environment.GetCommandLineArgs()[0]);
         }
 
         private void NotifyIcon_BalloonTipClicked(object sender, EventArgs e)

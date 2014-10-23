@@ -1,13 +1,13 @@
 ﻿using System;
 using LoggerLibrary;
 using Moq;
-using NUnit.Framework;
 using Ninject;
+using NUnit.Framework;
 
 namespace LoggerTests
 {
     [TestFixture]
-    class LogFileManagerTests
+    class LogFileManagerTests : IDisposable
     {
         private DateTime _now;
 
@@ -143,6 +143,11 @@ namespace LoggerTests
             {
                 _fileManager.Delete(archiveFileName);
             }
+        }
+
+        public void Dispose()
+        {
+            _kernel.Dispose();
         }
     }
 }

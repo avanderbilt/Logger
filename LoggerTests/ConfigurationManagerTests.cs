@@ -1,13 +1,13 @@
 ﻿using System;
 using LoggerLibrary;
 using Moq;
-using NUnit.Framework;
 using Ninject;
+using NUnit.Framework;
 
 namespace LoggerTests
 {
     [TestFixture]
-    internal class ConfigurationManagerTests
+    internal class ConfigurationManagerTests : IDisposable
     {
         private const string LogFileNameConfigurationKey = "LogFileName";
         private const string WindowOpacityConfigurationKey = "WindowOpacity";
@@ -192,6 +192,11 @@ namespace LoggerTests
         public void FailOnBadDefaultInterval()
         {
             _kernel.Get<IManageConfiguration>("BadDefaultIntervalConfiguration");
+        }
+
+        public void Dispose()
+        {
+            _kernel.Dispose();
         }
     }
 }

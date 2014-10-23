@@ -1,5 +1,4 @@
-﻿using LoggerLibrary;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 
 namespace Logger
 {
@@ -7,18 +6,6 @@ namespace Logger
     {
         public override void Load()
         {
-            Bind<IReadConfigurationFile>().
-                To<ReadConfigurationFile>();
-
-            Bind<IManageFiles>().
-                To<ManageFiles>();
-
-            Bind<IProvideDateTime>().
-                To<ProvideDateTime>();
-
-            Bind<IManageConfiguration>().
-                To<ManageConfiguration>();
-
             Bind<IManageLogFiles>().
                 To<ManageLogFiles>();
 
