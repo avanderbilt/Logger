@@ -161,5 +161,9 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
-*.xml
-*.DotSettings
+
+# More ...
+/Logger.sln.GhostDoc.xml
+/Logger.sln.DotSettings
+Logger.csproj.DotSettings.user
+Logger.csproj.ReSharper.user
